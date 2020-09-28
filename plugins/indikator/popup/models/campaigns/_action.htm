@@ -1,0 +1,10 @@
+<?php
+
+$sum = \Indikator\Popup\Models\Reports::where('campaign', $record->id)->sum('action');
+
+if (!$sum) {
+    echo 0;
+}
+else {
+    echo $sum;
+}

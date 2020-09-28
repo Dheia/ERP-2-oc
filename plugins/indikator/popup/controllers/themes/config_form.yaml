@@ -1,0 +1,17 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: indikator.popup::lang.title.themes
+form: ~/plugins/indikator/popup/models/themes/fields.yaml
+
+modelClass: Indikator\Popup\Models\Themes
+defaultRedirect: indikator/popup/themes
+
+create:
+    redirect: indikator/popup/themes/update/:id
+    redirectClose: indikator/popup/themes
+
+update:
+    redirect: indikator/popup/themes/update/:id
+    redirectClose: indikator/popup/themes

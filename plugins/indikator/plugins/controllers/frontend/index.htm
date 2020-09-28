@@ -1,0 +1,79 @@
+<div class="scoreboard">
+    <div class="container-flush">
+        <?= $this->makeHintPartial('indikator_plugins_hint', 'hint') ?>
+    </div>
+    <div data-control="toolbar">
+        <?php if (!isset($preferences['fp_show_total']) || $preferences['fp_show_total']): ?>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.plugins::lang.stat.total')) ?></h4>
+            <p><?= $pieces['total'] ?></p>
+            <p class="description"><?= e(trans_choice('indikator.plugins::lang.stat.pieces', $pieces['total'])) ?></p>
+        </div>
+        <div class="scoreboard-item control-chart" data-control="chart-pie">
+            <ul>
+                <li data-color="#e27f7f">JS <span><?= $count['js'] ?></span></li>
+                <li data-color="#e2e17f">CSS <span><?= $count['css'] ?></span></li>
+                <li data-color="#8892bf">PHP <span><?= $count['php'] ?></span></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!isset($preferences['fp_show_sizes']) || $preferences['fp_show_sizes']): ?>
+        <div class="scoreboard-item title-value">
+            <h4>JS <?= e(trans('indikator.plugins::lang.stat.size')) ?></h4>
+            <p><?= $size['js'][0] ?></p>
+            <p class="description"><?= $size['js'][1] ?></p>
+        </div>
+        <div class="scoreboard-item title-value">
+            <h4>CSS <?= e(trans('indikator.plugins::lang.stat.size')) ?></h4>
+            <p><?= $size['css'][0] ?></p>
+            <p class="description"><?= $size['css'][1] ?></p>
+        </div>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.plugins::lang.stat.img')) ?> <?= e(trans('indikator.plugins::lang.stat.size')) ?></h4>
+            <p><?= $size['img'][0] ?></p>
+            <p class="description"><?= $size['img'][1] ?></p>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!isset($preferences['fp_show_files']) || $preferences['fp_show_files']): ?>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.plugins::lang.stat.files')) ?></h4>
+            <p><?= $pieces['files'] ?></p>
+            <p class="description"><?= e(trans_choice('indikator.plugins::lang.stat.pieces', $pieces['files'])) ?></p>
+        </div>
+        <div class="scoreboard-item control-chart" data-control="chart-pie">
+            <ul>
+                <li data-color="#e27f7f">JS <span><?= $stat['js']['files'] ?></span></li>
+                <li data-color="#e2e17f">CSS <span><?= $stat['css']['files'] ?></span></li>
+                <li data-color="#96be58"><?= e(trans('indikator.plugins::lang.stat.img')) ?> <span><?= $stat['img']['files'] ?></span></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!isset($preferences['fp_show_folders']) || $preferences['fp_show_folders']): ?>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.plugins::lang.stat.folders')) ?></h4>
+            <p><?= $pieces['folders'] ?></p>
+            <p class="description"><?= e(trans_choice('indikator.plugins::lang.stat.pieces', $pieces['folders'])) ?></p>
+        </div>
+        <div class="scoreboard-item control-chart" data-control="chart-pie">
+            <ul>
+                <li data-color="#e27f7f">JS <span><?= $stat['js']['folders'] ?></span></li>
+                <li data-color="#e2e17f">CSS <span><?= $stat['css']['folders'] ?></span></li>
+                <li data-color="#96be58"><?= e(trans('indikator.plugins::lang.stat.img')) ?> <span><?= $stat['img']['folders'] ?></span></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!isset($preferences['fp_show_fonts']) || $preferences['fp_show_fonts']): ?>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.plugins::lang.form.font')) ?></h4>
+            <p><?= $pieces['font'] ?></p>
+            <p class="description"><?= e(trans_choice('indikator.plugins::lang.stat.pieces', $pieces['font'])) ?></p>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?= $this->listRender() ?>

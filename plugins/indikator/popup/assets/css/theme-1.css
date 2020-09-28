@@ -1,0 +1,45 @@
+.popup_layer {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.popup {
+    background: #f2f2f2;
+    max-width: 600px;
+}
+
+.popup_content {
+    padding: 20px 30px;
+}
+
+.popup_close {
+    font-family: Arial;
+    font-size: 16px;
+    background-color: #d1d1d1;
+    color: #4c4c4c;
+    padding: 4px 9px 4px 10px;
+}
+
+.popup .halfcolumn {
+    width: 50%;
+}
+
+.popup .popup_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-right: 20px;
+}
+
+.popup .popup_text {
+    font-size: 15px;
+    padding-right: 20px;
+}
+
+.popup input {
+    font-size: 15px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100%;
+}

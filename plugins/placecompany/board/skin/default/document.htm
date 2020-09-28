@@ -1,0 +1,105 @@
+<div id="board-document">
+    <div id="board-default-document">
+        <div class="board-document-wrap" itemscope itemtype="http://schema.org/Article">
+            <div class="board-title" itemprop="name">
+                <h1>{{ content.title }}</h1>
+            </div>
+
+            <div class="board-detail">
+                {% if content.category1 %}
+                <div class="detail-attr detail-category1">
+                    <div class="detail-name">{{ content.category1 }}</div>
+                </div>
+                {% endif %}
+                {% if content.category2 %}
+                <div class="detail-attr detail-category2">
+                    <div class="detail-name">{{ content.category2 }}</div>
+                </div>
+                {% endif %}
+                {% if content.option.tree_category_1 %}
+                {% for i in content.getTreeCategoryDepth() %}
+                <div class="detail-attr detail-tree-category-{{ i }}">
+                    <div class="detail-name">{{ content.option['tree_category'.i] }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="detail-attr detail-writer">
+                    <div class="detail-name">{{ 'placecompany.board::lang.Author'|trans }}</div>
+                    <div class="detail-value">{{ content.getUserDisplay() }}</div>
+                </div>
+                <div class="detail-attr detail-date">
+                    <div class="detail-name">{{ 'placecompany.board::lang.Date'|trans }}</div>
+                    <div class="detail-value">{{ content.updated_at|date('Y-m-d H:i') }}</div>
+                </div>
+                <div class="detail-attr detail-view">
+                    <div class="detail-name">{{ 'placecompany.board::lang.Views'|trans }}</div>
+                    <div class="detail-value">{{ content.view }}</div>
+                </div>
+            </div>
+
+            <div class="board-content" itemprop="description">
+                <div class="content-view">
+                    {{ content.getDocumentOptionsHTML()|raw }}
+                    {{ content.content|raw }}
+                </div>
+            </div>
+
+            <div class="board-document-action">
+                <div class="left">
+                    <button type="button" class="board-button-action board-button-like" onclick="board_document_like(this)" data-id="{{ content.id }}" title="{{ 'placecompany.board::lang.Like'|trans }}">{{ 'placecompany.board::lang.Like'|trans }} <span class="board-document-like-count">{{ content.like|number_format  }}</span></button>
+                    <button type="button" class="board-button-action board-button-unlike" onclick="board_document_unlike(this)" data-id="{{ content.id }}" title="{{ 'placecompany.board::lang.Unlike'|trans }}">{{ 'placecompany.board::lang.Unlike'|trans }} <span class="board-document-unlike-count">{{ content.unlike|number_format  }}</span></button>
+                </div>
+                <div class="right">
+                    <button type="button" class="board-button-action board-button-print" onclick="board_document_print('{{ url.getDocumentPrint(content.id) }}')" title="{{ 'placecompany.board::lang.Print'|trans }}">{{ 'placecompany.board::lang.Print'|trans }}</button>
+                </div>
+            </div>
+
+            {% if content.isAttached() %}
+            <div class="board-attach">
+                {% for key, attach in 1..content.getAttachmentList() %}
+                <button type="button" class="board-button-action board-button-download" onclick="window.location.href='{{ url.getDownloadURLWithAttach(content.id, key) }} '" title="{{ 'placecompany.board::lang.Download :title'|trans({'title': attach[1]}) }}">{{ attach[1] }}</button>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        {% if content.visibleComments() %}
+        <div class="board-comments-area">{{ board.buildComment(content.id)|raw }}</div>
+        {% endif %}
+
+        <div class="board-document-navi">
+            <div class="board-prev-document">
+                {% if bottom_content %}
+                <a href="{{ url.getDocumentURLWithID(bottom_content_id) }}" title="{{ bottom_content.title|e }}">
+                    <span class="navi-arrow">«</span>
+                    <span class="navi-document-title board-default-cut-strings">{{ bottom_content.title|e }}</span>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="board-next-document">
+                {% if top_content %}
+                <a href="{{ url.getDocumentURLWithID(top_content_id) }}" title="{{ top_content.title|e }}">
+                    <span class="navi-document-title board-default-cut-strings">{{ top_content.title|e }}</span>
+                    <span class="navi-arrow">»</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="board-control">
+            <div class="left">
+                <a href="{{ url.getBoardList() }}" class="board-default-button-small">{{ 'placecompany.board::lang.List'|trans }}</a>
+                {% if board.isReply() and not content.notice %}
+                <a href="{{ url.set('parent_id', content.id).set('mod', 'editor').toString() }}" class="board-default-button-small">{{ 'placecompany.board::lang.Reply'|trans }}</a>
+                {% endif %}
+            </div>
+            {% if content.isEditor() or board.permission_write == 'all' %}
+            <div class="right">
+                <a href="{{ url.getContentEditor(content.id) }}" class="board-default-button-small">{{ 'placecompany.board::lang.Edit'|trans }}</a>
+                <a href="{{ url.getContentRemove(content.id) }}" class="board-default-button-small" onclick="return confirm('{{ 'placecompany.board::lang.Are you sure you want to delete?'|trans }}');">{{ 'placecompany.board::lang.Delete'|trans }}</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

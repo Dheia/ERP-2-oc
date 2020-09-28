@@ -1,0 +1,20 @@
+plugin:
+    name: 'placecompany.board::lang.plugin.name'
+    description: '플레이스컴퍼니 게시판 플러그인'
+    author: placecompany
+    icon: oc-icon-expand
+    homepage: ''
+navigation:
+    board:
+        label: 게시판
+        url: placecompany/board/boardsetting
+        icon: icon-list
+        sideMenu:
+            boardsetting:
+                label: '게시판 목록 및 관리'
+                url: placecompany/board/boardsetting
+                icon: icon-sitemap
+            boardlatestview:
+                label: '최신글 모아보기'
+                url: placecompany/board/boardlatestview
+                icon: icon-folder-open

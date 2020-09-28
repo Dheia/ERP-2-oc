@@ -1,0 +1,10 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    created_date:
+        label: 생성일
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'

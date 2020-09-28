@@ -1,0 +1,32 @@
+{% set content = list.hasNextReply() %}
+{% for i in 0..10000 if content %}
+<tr class="{{ content.id == board_id ? 'board-list-selected' : '' }}">
+    <td class="board-list-uid"></td>
+    <td class="board-list-title" style="padding-left:{{ (depth+1)*5 }}px">
+        <a href="{{ url.getDocumentURLWithID(content.id) }}">
+            <div class="board-default-cut-strings">
+                <img src="{{ skin_path }}/images/icon-reply.png" alt="">
+                {% if content.isNew() %}<span class="board-default-new-notify">New</span>{% endif %}
+                {% if content.isNew() %}<img src="{{ skin_path }}/images/icon-lock.png" alt="{{ 'placecompany.board::lang.Secret'|trans }}">{% endif %}
+                {{ content.title }}
+                <span class="board-comments-count">{{ content.getcommentsCount() }}</span>
+            </div>
+        </a>
+        <div class="board-mobile-contents">
+            <span class="contents-item board-user">{{ content.getUserDisplay() }}</span>
+            <span class="contents-separator board-date">|</span>
+            <span class="contents-item board-date">{{ content.getDate }}</span>
+            <span class="contents-separator board-vote">|</span>
+            <span class="contents-item board-vote">{{ 'placecompany.board::lang.Votes'|trans }} {{ content.vote }}</span>
+            <span class="contents-separator board-view">|</span>
+            <span class="contents-item board-view">{{ 'placecompany.board::lang.Views'|trans }} {{ content.view }}</span>
+        </div>
+    </td>
+    <td class="board-list-user">{{ content.getUserDisplay() }}</td>
+    <td class="board-list-date">{{ content.getDate() }}</td>
+    <td class="board-list-vote">{{ content.vote }}</td>
+    <td class="board-list-view">{{ content.view }}</td>
+</tr>
+{{ boardBuilder.builderReply(content.id, depth+1) }}
+{% set content = list.hasNextReply() %}
+{% endfor %}

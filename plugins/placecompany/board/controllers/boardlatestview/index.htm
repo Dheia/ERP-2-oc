@@ -1,0 +1,10 @@
+<?php Block::put('breadcrumb') ?>
+<ul>
+    <li><?= e(trans($this->pageTitle)) ?></li>
+    <li>
+        <span class="text-info"><strong><?= Placecompany\Board\Models\BoardLatestView::all()->count() ?></strong>개</span>
+    </li>
+</ul>
+<?php Block::endPut() ?>
+
+<?= $this->listRender() ?>

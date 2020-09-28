@@ -1,0 +1,27 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: id
+        invisible: true
+
+    name:
+        label: 이름
+        searchable: true
+
+    skin:
+        label: 스킨
+        searchable: true
+
+    rpp:
+        label: 게시글 표시 수
+
+    sort:
+        label: 정렬순서
+
+    created_at:
+        label: 생성일
+        type: datetime

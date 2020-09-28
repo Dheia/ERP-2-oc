@@ -1,0 +1,25 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    js:
+        label: JavaScript
+        type: checkbox
+        conditions: language = 1
+
+    css:
+        label: CSS
+        type: checkbox
+        conditions: language = 3
+
+    php:
+        label: PHP
+        type: checkbox
+        conditions: language = 2
+
+    font:
+        label: indikator.plugins::lang.form.font
+        type: checkbox
+        conditions: language = 4

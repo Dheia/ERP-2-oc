@@ -1,0 +1,50 @@
+<div class="report-widget">
+    <h3><?= e(trans($this->property('title'))) ?></h3>
+
+    <?php if (!isset($error)): ?>
+        <?php if ($show): ?>
+        <div class="scoreboard">
+            <div data-control="toolbar">
+                <h4><span class="oc-icon-circle <?= $campaign->status_icon ?>"></span><?= $campaign->name ?></h4>
+                <strong><?= e(trans('indikator.popup::lang.report.action_desc')) ?></strong>
+                <div
+                    data-control="chart-line"
+                    data-time-mode="weeks"
+                    class="height-200"
+                    data-chart-options="xaxis: {mode: 'time'}">
+                    <span 
+                        data-chart="dataset" 
+                        data-set-color="#ab2a1c"
+                        data-set-data="<?= $campaign->stat_action ?>"
+                        data-set-name="<?= e(trans('indikator.popup::lang.report.action')) ?>">
+                    </span>
+                </div>
+                <br>
+                <strong><?= e(trans('indikator.popup::lang.report.view_desc')) ?></strong>
+                <div
+                    data-control="chart-line"
+                    data-time-mode="weeks"
+                    class="height-200"
+                    data-chart-options="xaxis: {mode: 'time'}">
+                    <span 
+                        data-chart="dataset" 
+                        data-set-color="#34495e"
+                        data-set-data="<?= $campaign->stat_view ?>"
+                        data-set-name="<?= e(trans('indikator.popup::lang.report.view')) ?>">
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <?php else: ?>
+        <div class="callout callout-warning">
+            <div class="content"><?= e(trans('indikator.popup::lang.widget.no_campaign')) ?></div>
+        </div>
+        <?php endif ?>
+   
+    <?php else: ?>
+    <div class="callout callout-warning">
+        <div class="content"><?= e($error) ?></div>
+    </div>
+    <?php endif ?>
+</div>

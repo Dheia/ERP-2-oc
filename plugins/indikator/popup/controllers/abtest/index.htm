@@ -1,0 +1,22 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><?= e(trans($this->pageTitle)) ?></li>
+        <li>
+            <span class="text-info"><strong><?= Indikator\Popup\Models\ABtest::where('status', 1)->count() ?></strong> <?= e(trans('indikator.popup::lang.form.status_active')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= Indikator\Popup\Models\ABtest::where('status', 2)->count() ?></strong> <?= e(trans('indikator.popup::lang.form.status_inactive')) ?></span> 
+        </li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if ($count == 0): ?>
+    <div class="callout callout-warning" style="margin:0 20px;">
+        <div class="header">
+            <i class="icon-arrow-circle-right"></i> 
+            <h3><?= e(trans('indikator.popup::lang.report.no_data_title')) ?></h3>
+            <p><?= e(trans('indikator.popup::lang.report.no_data_desc')) ?></p>
+        </div>
+    </div>
+<?php else: ?>
+    <?= $this->listRender() ?>
+<?php endif; ?>

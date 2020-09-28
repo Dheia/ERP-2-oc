@@ -1,0 +1,38 @@
+1.0.0:
+    - First version of Popup Manager plugin.
+    - create_campaigns_table.php
+    - create_themes_table.php
+    - create_reports_table.php
+1.0.1: Added more animations for theme.
+1.0.2: Added two dashboard widgets.
+1.1.0:
+    - Support the A/B test feature.
+    - create_abtest_table.php
+    - create_abtest_reports_table.php
+    - update_timestamp_nullable.php
+1.1.1: Added new icon for main navigation.
+1.1.2:
+    - Add subscribers to Campaign Manager list.
+    - add_list_field_to_table.php
+1.1.3:
+    - Add more options for Themes.
+    - add_theme_options_to_table.php
+1.2.0: Bot detection and better reports.
+1.2.1: Hide the code, when there is no popup.
+1.2.2: Fixed the Campaign plugin issue.
+1.2.3: Minor code improvements and bugfix.
+1.2.4: Added the Summary dashboard widget.
+1.2.5: Disable option for mobile devices.
+1.2.6: Added navigation links to the forms.
+1.2.7: !!! Updated for October 420+.
+1.2.8: Updated the mobile and bot detectors.
+1.3.0: The license of plugin changed to MIT.
+1.3.1:
+    - Updated the main navigation icon.
+    - Added 2 new filters to campaigns.
+1.3.2: Added permission to Dashboard widgets.
+1.3.3: Minor code improvements and bugfixes.
+1.3.4:
+    - Minor UI and database improvements.
+    - change_varchar_length.php
+1.3.5: Improved the list filters.

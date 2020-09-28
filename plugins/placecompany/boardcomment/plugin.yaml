@@ -1,0 +1,6 @@
+plugin:
+    name: 'placecompany.board-comments::lang.plugin.name'
+    description: '플레이스컴퍼니 게시판 댓글 플러그인'
+    author: placecompany
+    icon: oc-icon-expand
+    homepage: ''

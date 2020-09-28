@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table placecompany_erp_sign'
+    - builder_table_create_placecompany_erp_sign.php
+1.0.3:
+    - 'Created table placecompany_erp_customer'
+    - builder_table_create_placecompany_erp_customer.php
+1.0.4:
+    - 'Created table placecompany_erp_customer_company'
+    - builder_table_create_placecompany_erp_customer_company.php
+1.0.5:
+    - 'Created table placecompany_erp_service'
+    - builder_table_create_placecompany_erp_service.php
+1.0.6:
+    - 'Created table placecompany_erp_sign_service'
+    - builder_table_create_placecompany_erp_sign_service.php

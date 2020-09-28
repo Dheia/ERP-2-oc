@@ -1,0 +1,35 @@
+<div class="board-tree-category-search">
+    <form id="board-tree-category-search-form-{{ board.id }}" method="get" action="{{ url.toString() }}">
+        {{ url.set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toInput()|raw }}
+
+        <div class="board-tree-category-wrap">
+            {% set tree_category_list = board.tree_category.getCategoryItemList() %}
+            <div class="board-search-option-wrap-{{ board.tree_category.depth }} board-search-option-wrap type-tab">
+                <input type="hidden" name="board_search_option[tree_category_{{ board.tree_category.depth }}][key]" value="tree_category_{{ board.tree_category.depth }}">
+                <input type="hidden" name="board_search_option[tree_category_{{ board.tree_category.depth }}][value]" value="{{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) }}">
+                <ul class="board-tree-category">
+                    <li {{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) ? 'class="board-category-selected"' : '' }}><a href="#" onclick="return board_tree_category_search('{{ board.tree_category.depth }}', '')">{{ 'placecompany.board::lang.All'|trans }}</a></li>
+                    {% for item in tree_category_list %}
+                    <li {{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) == item.category_name ? 'class="board-category-selected"' : '' }}><a href="#" onclick="return board_tree_category_search('{{ board.tree_category.depth }}', '{{ item.category_name }}')">{{ item.category_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% for key, category_name in board.tree_category.getSelectedList() %}
+            {% set tree_category_list = board.tree_category.getCategoryItemList(category_name) %}
+            {% if tree_category_list %}
+            <div class="board-search-option-wrap-{{ board.tree_category.depth }} board-search-option-wrap type-tab">
+                <input type="hidden" name="board_search_option[tree_category_{{ board.tree_category.depth }}][key]" value="tree_category_{{ board.tree_category.depth }}">
+                <input type="hidden" name="board_search_option[tree_category_{{ board.tree_category.depth }}][value]" value="{{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) }}">
+                <ul class="board-tree-category">
+                    <li {{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) ? 'class="board-category-selected"' : '' }}><a href="#" onclick="return board_tree_category_search('{{ board.tree_category.depth }}', '')">{{ 'placecompany.board::lang.All'|trans }}</a></li>
+                    {% for item in tree_category_list %}
+                    <li {{ board.tree_category.getCategoryNameWithDepth(board.tree_category.depth) == item.category_name ? 'class="board-category-selected"' : '' }}><a href="#" onclick="return board_tree_category_search('{{ board.tree_category.depth }}', '{{ item.category_name }}')">{{ item.category_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </form>
+</div>

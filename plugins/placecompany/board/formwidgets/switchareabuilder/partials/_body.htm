@@ -1,0 +1,68 @@
+<?php
+$board_list = $this->vars['board_list'];
+$linked_board = $this->vars['linked_board'];
+$skin = $this->vars['skin'];
+$board_list->init();
+$board = $board_list->hasNext();
+?>
+
+<div class="link-control-area">
+    <div class="link-control-area-left select2-container--default">
+        <p>모아볼 게시판</p>
+        <select class="select2 select2-container select2-selection--multiple" name="link" id="link" size="10" multiple="multiple">
+            <?php $board_list->init(); while($board = $board_list->hasNext()):?>
+            <?php if(in_array($board->id, $linked_board)):?>
+            <option value="<?php echo $board->id?>"><?php echo $board->board_name?></option>
+            <?php endif?>
+            <?php endwhile?>
+        </select>
+    </div>
+    <div class="link-control-area-center">
+        <button type="button" class="btn btn-outline-default btn-switch" onclick="return push_board();">◀</button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-outline-default btn-switch" onclick="return pop_board();">▶</button>
+    </div>
+    <div class="link-control-area-right select2-container--default">
+        <p>제외된 게시판</p>
+        <select class="select2 select2-container select2-selection--multiple" name="unlink" id="unlink" size="10" multiple="multiple">
+            <?php $board_list->init(); while($board = $board_list->hasNext()):?>
+            <?php if(!in_array($board->id, $linked_board)):?>
+            <option value="<?php echo $board->id?>"><?php echo $board->board_name?></option>
+            <?php endif?>
+            <?php endwhile?>
+        </select>
+    </div>
+</div>
+
+<script>
+    function push_board(){
+        jQuery('option:selected', '#unlink').each(function(){
+            jQuery('#link').append(this);
+            updatelink();
+        });
+        return false;
+    }
+    function pop_board(){
+        jQuery('option:selected', '#link').each(function(){
+            jQuery('#unlink').append(this);
+            updatelink();
+        });
+        return false;
+    }
+
+    function updatelink() {
+        var link = '';
+        var unlink = '';
+
+        jQuery('option', '#link').each(function(){
+            link += ',' + jQuery(this).val();
+        });
+        jQuery('input[name=latestview_link]').val(link);
+
+        jQuery('option', '#unlink').each(function(){
+            unlink += ',' + jQuery(this).val();
+        });
+        jQuery('input[name=latestview_unlink]').val(unlink);
+    }
+</script>

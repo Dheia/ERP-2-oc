@@ -1,0 +1,23 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table placecompany_board_setting'
+    - create_board_setting_table.php
+    - 'Created table placecompany_board_content'
+    - create_board_content_table.php
+    - 'Created table placecompany_board_option'
+    - create_board_option_table.php
+    - 'Created table placecompany_board_meta'
+    - create_board_meta_table.php
+    - 'Created table placecompany_board_latestview'
+    - create_board_latestview_table.php
+    - 'Created table placecompany_board_latestview_link'
+    - create_board_latestview_link_table.php
+    - 'Created table placecompany_board_media'
+    - create_board_media_table.php
+    - 'Created table placecompany_board_media_relationships'
+    - create_board_media_relationships_table.php
+    - 'Created table placecompany_board_attached'
+    - create_board_attached_table.php
+    - 'Created table placecompany_board_vote'
+    - create_board_vote_table.php

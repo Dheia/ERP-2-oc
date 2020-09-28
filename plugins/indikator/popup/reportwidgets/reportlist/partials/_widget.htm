@@ -1,0 +1,23 @@
+<div class="report-widget">
+    <h3><?= e(trans($this->property('title'))) ?></h3>
+
+    <?php if (!isset($error)): ?>
+    <div class="control-status-list">
+        <ul>
+            <?php
+            foreach ($list as $name => $rate):
+            ?>
+            <li>
+                <span class="status-text"><?= $name ?></span>
+                <span class="status-label primary"><?= $rate ?> %</span>
+            </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+
+    <?php else: ?>
+    <div class="callout callout-warning">
+        <div class="content"><?= e($error) ?></div>
+    </div>
+    <?php endif ?>
+</div>

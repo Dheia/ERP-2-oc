@@ -1,0 +1,24 @@
+{% if show %}
+<div class="popup" id="popup">
+    <div class="popup_close" onclick="$.ocpopup_close()">X</div>
+    <div class="popup_content">
+        <form data-request="onPopup" data-request-success="$('#popup form').trigger('reset');$.ocpopup_close()">
+            {{ content|raw }}
+            <div style="clear:both;"></div>
+            <input type="hidden" name="campaign" value="{{ campaign }}">
+            <input type="hidden" name="abtest" value="{{ abtest }}">
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $.ocpopup({
+            fadespeed:{{ speed }}, open:{{ open }}, layer:'#popup'{{ param }},
+            onleave:function() {
+                $.post('{{ staturl }}?campaign={{ campaign }}&abtest={{ abtest }}', function(data, status) {});
+            }
+        });
+    });
+</script>
+{% endif %}

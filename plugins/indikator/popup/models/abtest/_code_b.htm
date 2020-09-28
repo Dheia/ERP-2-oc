@@ -1,0 +1,9 @@
+<?php
+
+$code = \Indikator\Popup\Models\ABtestReports::where('abtest', $record->id)->sum('code_b');
+
+if (!$code) {
+    $code = 0;
+}
+
+echo $code;

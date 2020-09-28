@@ -1,0 +1,5 @@
+<?php
+
+if ($record->speed) {
+    echo round($record->speed / 1000, 1).' '.Lang::get('indikator.popup::lang.form.sec');
+}

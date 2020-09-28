@@ -1,0 +1,25 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: 게시판 관리
+list: ~/plugins/placecompany/board/models/boardsetting/columns.yaml
+
+modelClass: Placecompany\Board\Models\BoardSetting
+recordUrl: placecompany/board/boardsetting/update/:id
+noRecordsMessage: backend::lang.list.no_records
+
+recordsPerPage: 15
+showCheckboxes: true
+showSetup: true
+
+defaultSort:
+    column: name
+    direction: asc
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt
+
+filter: config_filter.yaml

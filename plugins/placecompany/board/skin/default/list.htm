@@ -1,0 +1,152 @@
+<div id="board-default-list">
+
+    <!-- 게시판 정보 시작 -->
+    <div class="board-list-header">
+        {% if board.isPrivate() %}
+        <div class="board-total-count">
+            {{ "placecompany.board::lang.Total"|trans }} {{ board.getListTotal|number_format }}
+        </div>
+        {% endif %}
+
+        <div class="board-sort">
+            <form id="board-sort-form-{{ board.id }}" method="get" action="{{ url.toString() }}">
+                {{ url.set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toInput()|raw }}
+
+                <select name="board_list_sort" onchange="jQuery('#board-sort-form-{{ board.id }}').submit();">
+                    <option value="newest"{{ list.getSorting() == 'newest' ? 'selected' : '' }} >{{ "placecompany.board::lang.Newest"|trans }}</option>
+                    <option value="best" {{ list.getSorting() == 'best' ? 'selected' : '' }} >{{ "placecompany.board::lang.Best"|trans }}</option>
+                    <option value="viewed" {{ list.getSorting() == 'viewed' ? 'selected' : '' }} >{{ "placecompany.board::lang.Viewed"|trans }}</option>
+                    <option value="updated" {{ list.getSorting() == 'updated' ? 'selected' : '' }} >{{ "placecompany.board::lang.Updated"|trans }}</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <!-- 게시판 정보 끝 -->
+
+    <!-- 카테고리 시작 -->
+    {{ category|raw }}
+    <!-- 카테고리 끝 -->
+
+    <!-- 리스트 시작 -->
+    <div class="board-list">
+        <table>
+            <thead>
+            <tr>
+                <td class="board-list-id">{{ "placecompany.board::lang.Number"|trans }}</td>
+                <td class="board-list-title">{{ "placecompany.board::lang.Title"|trans }}</td>
+                <td class="board-list-user">{{ "placecompany.board::lang.Author"|trans }}</td>
+                <td class="board-list-date">{{ "placecompany.board::lang.Date"|trans }}</td>
+                <td class="board-list-vote">{{ "placecompany.board::lang.Votes"|trans }}</td>
+                <td class="board-list-view">{{ "placecompany.board::lang.Views"|trans }}</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% set content = list.hasNextNotice() %}
+            {% for i in 0..10000 if content %}
+            <tr class="board-list-notice{{ content.id == board_id ? 'board-list-selected' : '' }}">
+                <td class="board-list-id">{{ "placecompany.board::lang.Notice"|trans }}</td>
+                <td class="board-list-title">
+                    <a href="{{ url.getDocumentURLWithID(content.id) }}">
+                        <div class="board-default-cut-strings">
+                            {% if content.isNew %}
+                            <span class="board-default-new-notify">{{ "placecompany.board::lang.New"|trans }}</span>
+                            {% endif %}
+                            {% if content.secret %}
+                            <img src="{{ skin_path }}/images/icon-lock.png" alt='{{ "placecompany.board::lang.Secret"|trans }}'>
+                            {% endif %}
+                            {{ content.title }}
+                            <span class="board-comments-count">{{ content.getComentsCount() }}</span>
+                        </div>
+                    </a>
+                    <div class="board-mobile-contents">
+                        <span class="contents-item board-user">{{ content.getUserDisplay() }}</span>
+                        <span class="contents-separator board-date">|</span>
+                        <span class="contents-item board-date">{{ content.getDate() }}</span>
+                        <span class="contents-separator board-vote">|</span>
+                        <span class="contents-item board-vote">Votes {{ content.vote }}</span>
+                        <span class="contents-separator board-view">|</span>
+                        <span class="contents-item board-view">Views {{ content.view }}</span>
+                    </div>
+                </td>
+                <td class="board-list-user">{{ content.getUserDisplay() }}</td>
+                <td class="board-list-date">{{ content.getDate() }}</td>
+                <td class="board-list-vote">{{ content.vote }}</td>
+                <td class="board-list-view">{{ content.view }}</td>
+            </tr>
+            {% set content = list.hasNextNotice() %}
+            {% endfor %}
+
+            {% set content = list.hasNext() %}
+            {% for i in 0..10000 if content %}
+            <tr class="{{ content.id == board_id ? 'board-list-selected' : '' }}">
+                <td class="board-list-id">{{ list.index() }}</td>
+                <td class="board-list-title">
+                    <a href="{{ url.getDocumentURLWithID(content.id) }}">
+                        <div class="board-default-cut-strings">
+                            {% if content.isNew() %}
+                            <span class="board-default-new-notify">{{ "placecompany.board::lang.New"|trans }}</span>
+                            {% endif %}
+                            {% if content.secret %}
+                            <img src="{{ skin_path }}/images/icon-lock.png" alt='{{ "placecompany.board::lang.Secret"|trans }}'>
+                            {% endif %}
+                            {{ content.title }}
+                            <span class="board-comments-count">{{ content.getCommentsCount() }}</span>
+                        </div>
+                    </a>
+                    <div class="board-mobile-contents">
+                        <span class="contents-item board-user">{{ content.getUserDisplay() }}</span>
+                        <span class="contents-separator board-date">|</span>
+                        <span class="contents-item board-date">{{ content.getDate() }}</span>
+                        <span class="contents-separator board-vote">|</span>
+                        <span class="contents-item board-vote">{{ "placecompany.board::lang.Vote"|trans }}{{ board.id  }}</span>
+                        <span class="contents-separator board-view">|</span>
+                        <span class="contents-item board-view">{{ "placecompany.board::lang.Views"|trans }} {{ content.view }}</span>
+                    </div>
+                </td>
+                <td class="board-list-user">{{ content.getUserDisplay() }}</td>
+                <td class="board-list-date">{{ content.getDate() }}</td>
+                <td class="board-list-vote">{{ content.vote }}</td>
+                <td class="board-list-view">{{ content.view }}</td>
+            </tr>
+            {{ boardBuilder.builderReply(content.id) }}
+            {% set content = list.hasNext() %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- 리스트 끝 -->
+
+    <!-- 페이징 시작 -->
+    <div class="board-pagination">
+        <ul class="board-pagination-pages">
+            {{ pagination|raw }}
+        </ul>
+    </div>
+    <!-- 페이징 끝 -->
+
+    <!-- 검색폼 시작 -->
+    <div class="board-search">
+        <form id="board-search-form-{{ board.id }}" method="get" action="{{ url.toString() }}">
+            {{ url.set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toInput()|raw }}
+
+            <select name="target">
+                <option value="">{{ "placecompany.board::lang.All"|trans }}</option>
+                <option value="title" {{ board_target == 'title' ? 'selected' : '' }}>{{ "placecompany.board::lang.Title"|trans }}</option>
+                <option value="content" {{ board_target == 'content' ? 'selected' : '' }}>{{ "placecompany.board::lang.Content"|trans }}</option>
+                <option value="user_display" {{ board_target == 'user_display' ? 'selected' : '' }}>{{ "placecompany.board::lang.Author"|trans }}</option>
+            </select>
+            <input type="text" name="keyword" value="{{ board_keyword }}">
+            <button type="submit" class="board-default-button-small">{{ "placecompany.board::lang.Search"|trans }}</button>
+        </form>
+    </div>
+    <!-- 검색폼 끝 -->
+
+    {% if board.isWriter() %}
+    <!-- 버튼 시작 -->
+    <div class="board-control">
+        <a href="{{ url.getContentEditor() }}" class="board-default-button-small">{{ "placecompany.board::lang.New"|trans }}</a>
+    </div>
+    <!-- 버튼 끝 -->
+    {% endif %}
+
+</div>

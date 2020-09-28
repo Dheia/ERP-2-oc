@@ -1,0 +1,31 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    campaign:
+        label: indikator.popup::lang.form.campaign
+        conditions: campaign in (:filtered)
+        modelClass: Indikator\Popup\Models\ABtest
+        options: getCampaignOptions
+
+    status_active:
+        label: indikator.popup::lang.form.status_active
+        type: checkbox
+        conditions: status = 1
+
+    status_inactive:
+        label: indikator.popup::lang.form.status_inactive
+        type: checkbox
+        conditions: status = 2
+
+    created_date:
+        label: indikator.popup::lang.list.created_at
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+
+    updated_date:
+        label: indikator.popup::lang.list.updated_at
+        type: daterange
+        conditions: updated_at >= ':after' AND updated_at <= ':before'

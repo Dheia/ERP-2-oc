@@ -1,0 +1,692 @@
+# ===================================
+#  Field Definitions
+# ===================================
+fields:
+    # 기본설정 탭
+    _board_id:
+        type: partial
+        path: $/placecompany/board/models/boardsetting/_board_id_field.htm
+        attributes:
+            hidden: true
+tabs:
+    stretch: true
+    defaultTab: 기본설정
+
+    fields:
+        # 기본설정 탭
+        board_name:
+            label: 게시판 이름
+            required: true
+            attributes:
+                autofocus: ''
+            span: left
+            tab: 기본설정
+
+        skin:
+            label: 스킨
+            type: dropdown
+            default: 0
+            span: left
+            comment: 게시판 스킨에 따라 모양과 기능이 변합니다.
+            tab: 기본설정
+
+        page_rpp:
+            label: 게시글 표시 수
+            type: dropdown
+            default: 10
+            options:
+                1: 1개
+                2: 2개
+                3: 3개
+                4: 4개
+                5: 5개
+                6: 6개
+                7: 7개
+                8: 8개
+                9: 9개
+                10: 10개
+                11: 11개
+                12: 12개
+                13: 13개
+                14: 14개
+                15: 15개
+                16: 16개
+                17: 17개
+                18: 18개
+                19: 19개
+                20: 20개
+                30: 30개
+                40: 40개
+                50: 50개
+                60: 60개
+                70: 70개
+                80: 80개
+                90: 90개
+                100: 100개
+            span: left
+            comment: 한 페이지에 보여지는 게시글 개수를 정합니다.
+            tab: 기본설정
+
+        use_comment:
+            label: 댓글 사용
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            tab: 기본설정
+
+        _notice_invisible_comments:
+            label: 공지사항 글에 댓글 사용
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            tab: 기본설정
+
+        _comment_skin:
+            label: 댓글 스킨 선택
+            type: dropdown
+            default: 0
+            span: left
+            comment: 댓글의 모양을 선택합니다. (BoardComment 플러그인 필요)
+            tab: 기본설정
+
+        use_editor:
+            label: 글 작성 에디터
+            type: dropdown
+            default: ckeditor
+            options:
+                snote: 썸머노트
+                ckeditor: CKEditor
+            span: left
+            commentHtml: true
+            comment:
+                에디터를 사용하시면 내용에 이미지를 삽입, 링크 걸기 등 편리하게 게시글을 작성할 수 있습니다.<br>
+                에디터가 제대로 동작하지 않는다면 사용하고 있는 테마를 바꾸거나 플러그인들을 비활성화한 다음 점검해보세요.
+            tab: 기본설정
+
+        _autolink:
+            label: 게시글 본문 자동링크 사용
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            comment: 에디터 textarea를 사용할때 url주소에 자동으로 링크를 생성합니다.
+            tab: 기본설정
+
+        use_category:
+            label: 카테고리 사용
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            comment: 카테고리를 사용해서 게시글을 분리할 수 있습니다.
+            tab: 기본설정
+
+        _use_tree_category:
+            label: 카테고리 선택
+            type: dropdown
+            options:
+                yes: 계층형 카테고리 사용
+            emptyOption: 기본 카테고리 사용
+            span: left
+            commentHtml: true
+            comment:
+                기본 카테고리를 사용하시려면 아래의 카테고리1과 카테고리2 설정을 세팅해주세요.<br>
+                계층형 카테고리를 선택하면 기본 카테고리는 사용이 중지됩니다.<br>
+                계층형 카테고리가 적용되지 않는 일부 스킨에는 기본 카테고리를 사용해주세요.
+            tab: 기본설정
+
+        category1_list:
+            label: 카테고리1
+            attributes:
+                autofocus: ''
+            span: left
+            placeholder: "예제 : 자유게시판, 공지사항"
+            comment: 특수문자는 사용할 수 없습니다. 여러 카테고리를 입력하실 경우 콤마(,)로 구분됩니다.
+            tab: 기본설정
+
+        category2_list:
+            label: 카테고리2
+            attributes:
+                autofocus: ''
+            span: left
+            placeholder: "예제 : 자유게시판, 공지사항"
+            comment: 특수문자는 사용할 수 없습니다. 여러 카테고리를 입력하실 경우 콤마(,)로 구분됩니다.
+            tab: 기본설정
+
+        _latest_alerts:
+            label: 최신글 이메일 알림
+            attributes:
+                autofocus: ''
+            span: left
+            placeholder: "예제 : support@placecompany.com"
+            commentHtml: true
+            comment:
+                최신글이 등록되면 입력된 이메일로 알려드립니다.<br>
+                여러명을 입력하실 경우 콤마(,)로 구분됩니다.<br>
+                서버 환경에 따라서 이메일이 전송되지 못 할 수도 있습니다.
+            tab: 기본설정
+
+        _latest_alerts_attachments_size:
+            label: 메일 첨부파일 여부
+            type: dropdown
+            options:
+                1: 1 MB 이하 첨부파일 포함
+                10: 10 MB 이하 첨부파일 포함
+                20: 20 MB 이하 첨부파일 포함
+                30: 30 MB 이하 첨부파일 포함
+                40: 40 MB 이하 첨부파일 포함
+                50: 50 MB 이하 첨부파일 포함
+                60: 60 MB 이하 첨부파일 포함
+                70: 70 MB 이하 첨부파일 포함
+                80: 80 MB 이하 첨부파일 포함
+                90: 90 MB 이하 첨부파일 포함
+                100: 100 MB 이하 첨부파일 포함
+            emptyOption: 첨부파일 제외
+            span: left
+            commentHtml: true
+            comment:
+                최신글 이메일 알림에 첨부파일을 포함해서 전송할 수 있습니다.<br>
+                안전한 전송을 위해서 설정한 용량보다 작은 파일만 포함해서 이메일을 전송합니다.<br>
+                이메일을 보내는 쪽 서버 또는 받는 쪽 서버에서 첨부파일 허용 용량에 제한이 있다면 에러가 날 수도 있습니다.
+            tab: 기본설정
+
+        _always_view_list:
+            label: 뷰페이지 리스트노출
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            comment: 글 읽기 화면에서도 하단에 게시판 리스트를 보여줍니다.
+            tab: 기본설정
+
+        _max_attached_count:
+            label: 최대 첨부파일 개수
+            type: dropdown
+            options:
+                1: 1개
+                2: 2개
+                3: 3개
+                4: 4개
+                5: 5개
+                6: 6개
+                7: 7개
+                8: 8개
+                9: 9개
+                10: 10개
+                11: 11개
+                12: 12개
+                13: 13개
+                14: 14개
+                15: 15개
+                16: 16개
+                17: 17개
+                18: 18개
+                19: 19개
+                20: 20개
+                30: 30개
+                40: 40개
+                50: 50개
+                60: 60개
+                70: 70개
+                80: 80개
+                90: 90개
+                100: 100개
+            emptyOption: 없음
+            span: left
+            comment: 게시글당 최대 첨부파일 개수를 정합니다. 일부 스킨에서는 적용되지 않습니다.
+            tab: 기본설정
+
+        _list_sort_numbers:
+            label: 리스트 게시글 번호 표시
+            type: dropdown
+            options:
+                desc: 내림차순 (3,2,1)
+                asc: 오름차순 (1,2,3)
+            span: left
+            commentHtml: true
+            comment:
+                리스트에서 게시글 번호를 내림차순 또는 오름차순으로 표시할 수 있습니다.<br>
+                실제 게시글 정렬과는 무관하게 번호 표시만 바뀝니다.<br>
+                번호 표시가 없는 스킨은 적용되지 않습니다.
+            tab: 기본설정
+
+        # 권한설정 탭
+        _permission_admin_roles:
+            label: 최고관리자 그룹
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            default: administrator
+            span: left
+            comment: 글쓴이는 실제 글쓴이를 지칭하는게 아니라 역할(Role) 명칭입니다.
+            tab: 권한설정
+
+        admin_user:
+            label: 선택된 관리자
+            attributes:
+                autofocus: ''
+            span: left
+            comment: 사용자 아이디를 입력하세요. 여러명을 입력하실 경우 콤마(,)로 구분됩니다.
+            tab: 권한설정
+
+        permission_read:
+            label: 읽기권한
+            type: dropdown
+            options:
+                all: 제한 없음
+                author: 로그인 사용자
+                roles: 직접선택
+            default: all
+            span: left
+            tab: 권한설정
+
+        _permission_read_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_read
+                condition: value[roles]
+            tab: 권한설정
+
+        permission_write:
+            label: 쓰기권한
+            type: dropdown
+            options:
+                all: 제한 없음
+                author: 로그인 사용자
+                roles: 직접선택
+            default: all
+            span: left
+            tab: 권한설정
+
+        _permission_write_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_write
+                condition: value[roles]
+            tab: 권한설정
+
+        _permission_reply:
+            label: 답글쓰기권한
+            type: dropdown
+            options:
+                all: 제한 없음
+                author: 로그인 사용자
+                roles: 직접선택
+            default: all
+            span: left
+            tab: 권한설정
+
+        _permission_reply_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_reply
+                condition: value[roles]
+            tab: 권한설정
+
+        _permission_comment_write:
+            label: 댓글쓰기 권한
+            type: dropdown
+            options:
+                1: 로그인 사용자
+                roles: 직접선택
+            emptyOption: 제한 없음
+            span: left
+            commentHtml: true
+            comment:
+                본인의 댓글만 보기로 세팅하시려면 댓글쓰기권한을 로그인 사용자 이상으로 변경해주세요.<br>
+                본인의 댓글만 보기는 다른 사람이 작성한 댓글을 볼 수 없으며 해당 게시글 작성자는 모든 댓글을 볼 수 있습니다.
+            tab: 권한설정
+
+        _permission_comment_write_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_comment_write
+                condition: value[roles]
+            tab: 권한설정
+
+        _permission_comment_read_minute:
+            label: 비로그인 사용자 댓글확인 시간
+            type: number
+            step: 1
+            min: 0
+            max: 100
+            default: 0
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_comment_read
+                condition: value[all]
+            comment: 시간이 0일 경우와 로그인 사용자는 댓글을 바로 볼 수 있습니다.
+            tab: 권한설정
+
+        _permission_attachment_download:
+            label: 첨부파일 다운로드 권한
+            type: dropdown
+            options:
+                all: 제한 없음
+                author: 로그인 사용자
+                roles: 직접선택
+            default: all
+            span: left
+            commentHtml: true
+            comment:
+                게시글에 등록된 첨부파일 다운로드를 제한할 수 있습니다.<br>
+                먼저 읽기권한이 있는 사용자만 다운로드가 가능합니다.<br>
+                글 작성자 본인은 항상 다운로드할 수 있습니다.
+            tab: 권한설정
+
+        _permission_attachment_download_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_attachment_download
+                condition: value[roles]
+            tab: 권한설정
+
+        _permission_vote:
+            label: 추천권한
+            type: dropdown
+            options:
+                all: 제한 없음
+                author: 로그인 사용자
+                roles: 직접선택
+            default: all
+            span: left
+            commentHtml: true
+            comment:
+                게시판에서 좋아요, 싫어요 기능을 제한할 수 있습니다.<br>
+                스킨에 따라서 버튼이 숨겨지거나 그렇지 않을 수 있습니다.
+            tab: 권한설정
+
+        _permission_vote_roles:
+            label: 그룹 선택
+            type: checkboxlist
+            options:
+                administrator: 관리자
+                editor: 편집자
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_vote
+                condition: value[roles]
+            tab: 권한설정
+
+        _permission_list:
+            label: 리스트 보기
+            type: dropdown
+            options:
+                1: 본인의 글만 보기
+            emptyOption: 전체글 보기
+            span: left
+            commentHtml: true
+            comment:
+                본인의 글만 보기로 설정하면 관리자와의 1:1 게시판으로 운영이 가능합니다.<br>
+                공지사항은 항상 표시됩니다.
+            tab: 권한설정
+
+        _permission_access:
+            label: 비로그인 사용자 로그인페이지 이동
+            type: checkbox
+            span: left
+            cssClass: field-indent
+            trigger:
+                action: show
+                field: permission_list
+                condition: value[1]
+            tab: 권한설정
+
+        _permit:
+            label: 관리자 승인
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            commentHtml: true
+            comment:
+                읽기/쓰기 권한과는 관계없이 관리자가 승인한 게시글만 정상적으로 보입니다. <a href="">전체 게시글 관리</a><br>
+                승인되지 않은 글은 제목과 내용이 숨김 처리되어 확인이 불가능하며 리스트에는 추가되어 작성자가 편집할 수 있습니다.
+            tab: 권한설정
+
+        _secret_checked_default:
+            label: 비밀글 기본 체크
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            comment: 새로운 글 작성 시 비밀글 체크박스를 기본적으로 체크해 보여줍니다.
+            tab: 권한설정
+
+        # 입력필드 설정 탭
+        _input_field:
+            type: Placecompany\Board\FormWidgets\InputFieldBuilder
+            size: huge
+            tab: 입력필드 설정
+
+        # 계층형 카테고리 설정 탭
+        _tree_category:
+            type: Placecompany\Board\FormWidgets\treeCategoryBuilder
+            size: huge
+            tab: 계층형 카테고리
+
+        # 고급 설정 탭
+        _shortcode_execute:
+            label: 게시글 숏코드(Shortcode) 실행
+            type: dropdown
+            options:
+                yes: 활성화
+            emptyOption: 비활성화
+            span: left
+            tab: 고급설정
+
+        _default_content:
+            label: 본문 기본 양식
+            type: Backend\FormWidgets\RichEditor
+            size: large
+            span: left
+            comment: 게시판 글 작성시 보여질 기본 양식입니다. 기본값은 빈 값입니다.
+            tab: 고급설정
+
+        _reply_copy_content:
+            label: 답글 기본 내용
+            type: dropdown
+            options:
+                1: 원글 내용
+                2: 본문 기본 양식
+            emptyOption: 빈 내용
+            span: left
+            comment: 답글 작성시 원글의 내용을 가져오거나 본문 기본 양식을 보여줍니다.
+            tab: 고급설정
+
+        _use_direct_url:
+            label: 고급 사용자용 고유주소
+            type: dropdown
+            options:
+                1: 사용하기
+            emptyOption: 사용중지
+            span: left
+            commentHtml: true
+            comment : 고유주소는 독립적 레이아웃 편집, 아이프레임 삽입, 다른 사이트와 연결 등 고급 사용자를 위한 편의 기능입니다.<br>
+                일반 사용자는 자동설치 또는 숏코드(Shortcode)를 사용해 게시판을 생성하세요.<br>
+                글쓰기 아이프레임으로 보기 기능과 충돌할 수 있으니 해당 기능을 비활성화 해주세요.
+            tab: 고급설정
+
+        _pass_autop:
+            label: 특정 테마 레이아웃 깨짐 방지
+            type: dropdown
+            options:
+                disable: 비활성화
+                enable: 활성화
+            span: left
+            commentHtml: true
+            comment: 문제가 없다면 활성화 하지 마세요.<br>
+                특정 테마에서 content에 자동으로 P태그가 추가되어 레이아웃이 깨지는 현상이 발생됩니다.<br>
+                활성화시 content에 P태그가 추가되기 전에 게시판을 출력시킵니다.
+            tab: 고급설정
+
+        _view_iframe:
+            label: 아이프레임으로 보기
+            type: dropdown
+            options:
+                1: 활성화
+            emptyOption: 비활성화
+            span: left
+            commentHtml: true
+            comment: 문제가 없다면 활성화 하지 마세요.<br>
+                원페이지 테마 또는 게시판이 심하게 깨질 때 아이프레임으로 보기를 사용해주세요.
+            tab: 고급설정
+
+        _editor_view_iframe:
+            label: 글쓰기 아이프레임으로 보기
+            type: dropdown
+            options:
+                1: 활성화
+            emptyOption: 비활성화
+            span: left
+            commentHtml: true
+            comment: 문제가 없다면 활성화 하지 마세요.<br>
+                글쓰기 화면 또는 워드프레스 내장 에디터가 깨질 때 사용해주세요.
+            tab: 고급설정
+
+        _conversion_tracking_code:
+            label: 글쓰기 아이프레임으로 보기
+            type: textarea
+            span: left
+            commentHtml: true
+            comment: 게시글 등록 전환추적을 위한 코드(HTML 태그 또는 자바스크립트 소스)를 입력해주세요.<br>
+                이 코드가 존재하면 새로운 게시글이 저장된 직후 실행됩니다.
+            tab: 고급설정
+
+        _default_build_mod:
+            label: 게시판 기본 화면
+            type: dropdown
+            options:
+                editor: 글쓰기 화면
+            emptyOption: 글목록 화면
+            span: left
+            commentHtml: true
+            comment: 게시판에서 첫 번째로 보일 화면을 정합니다.<br>
+                별다른 이유가 없다면 글목록 화면으로 선택해주세요.
+            tab: 고급설정
+
+        _after_executing_mod:
+            label: 글 쓴 후 이동 화면
+            type: dropdown
+            options:
+                list: 글목록 화면
+                editor: 글쓰기 화면
+            emptyOption: 작성된 글 화면
+            span: left
+            commentHtml: true
+            comment: 글쓰기를 완료하고 보일 화면을 정합니다.<br>
+                보통의 경우라면 작성된 글 화면으로 이동해주세요.
+            tab: 고급설정
+
+        # 포인트 설정 탭
+        _document_insert_up_point:
+            label: 글쓰기 증가 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _document_insert_down_point:
+            label: 글쓰기 감소 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _document_delete_up_point:
+            label: 글삭제 증가 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _document_delete_down_point:
+            label: 글삭제 감소 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _document_read_down_point:
+            label: 글읽기 감소 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _attachment_download_down_point:
+            label: 첨부파일 다운로드 감소 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _comment_insert_up_point:
+            label: 댓글쓰기 증가 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _comment_insert_down_point:
+            label: 댓글삭제 증가 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정
+
+        _comment_delete_down_point:
+            label: 댓글삭제 감소 포인트
+            type: number
+            step: 0  # defaults to 'any'
+            span: left
+            tab: 포인트설정

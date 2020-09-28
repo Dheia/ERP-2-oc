@@ -1,0 +1,17 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: indikator.popup::lang.title.abtest
+form: ~/plugins/indikator/popup/models/abtest/fields.yaml
+
+modelClass: Indikator\Popup\Models\ABtest
+defaultRedirect: indikator/popup/abtest
+
+create:
+    redirect: indikator/popup/abtest/update/:id
+    redirectClose: indikator/popup/abtest
+
+update:
+    redirect: indikator/popup/abtest/update/:id
+    redirectClose: indikator/popup/abtest

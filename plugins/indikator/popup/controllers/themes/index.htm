@@ -1,0 +1,12 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><?= e(trans($this->pageTitle)) ?></li>
+        <li>
+            <span class="text-info"><strong><?= Indikator\Popup\Models\Themes::where('status', 1)->count() ?></strong> <?= e(trans('indikator.popup::lang.form.status_active')) ?></span>
+            &nbsp; | &nbsp;
+            <span class="text-danger"><strong><?= Indikator\Popup\Models\Themes::where('status', 2)->count() ?></strong> <?= e(trans('indikator.popup::lang.form.status_inactive')) ?></span>
+        </li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?= $this->listRender() ?>

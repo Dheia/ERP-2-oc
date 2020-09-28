@@ -1,0 +1,72 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: indikator.popup::lang.form.id
+        invisible: true
+
+    name:
+        label: indikator.popup::lang.form.name
+        searchable: true
+
+    comment:
+        label: indikator.popup::lang.form.comment
+        searchable: true
+        invisible: true
+
+    integration:
+        label: indikator.popup::lang.form.integration
+        searchable: true
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/popup/models/campaigns/_integration.htm
+
+    theme:
+        label: indikator.popup::lang.form.theme
+        searchable: true
+        invisible: true
+        type: partial
+        path: ~/plugins/indikator/popup/models/campaigns/_theme.htm
+
+    start_at:
+        label: indikator.popup::lang.form.start_at
+        searchable: true
+        invisible: true
+        type: datetime
+
+    end_at:
+        label: indikator.popup::lang.form.end_at
+        searchable: true
+        invisible: true
+        type: datetime
+
+    view:
+        label: indikator.popup::lang.report.view
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/popup/models/campaigns/_view.htm
+
+    action:
+        label: indikator.popup::lang.report.action
+        sortable: false
+        type: partial
+        path: ~/plugins/indikator/popup/models/campaigns/_action.htm
+
+    status:
+        label: indikator.popup::lang.form.status
+        sortable: false
+        type: popup_status
+
+    created_at:
+        label: indikator.popup::lang.list.created_at
+        searchable: true
+        invisible: true
+        type: datetime
+
+    updated_at:
+        label: indikator.popup::lang.list.updated_at
+        searchable: true
+        type: datetime

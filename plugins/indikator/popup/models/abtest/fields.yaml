@@ -1,0 +1,86 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    campaign:
+        label: indikator.popup::lang.form.campaign
+        type: dropdown
+        required: true
+        span: storm
+        cssClass: col-xs-12
+
+tabs:
+
+    icons:
+
+        indikator.popup::lang.form.result: icon-file-text-o
+        indikator.popup::lang.form.abtest: icon-balance-scale
+
+    fields:
+
+        result:
+            tab: indikator.popup::lang.form.result
+            label: ''
+            type: richeditor
+            size: huge
+            span: storm
+            cssClass: col-xs-12
+
+        theme_label:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.theme_label
+            type: section
+            span: storm
+            cssClass: col-xs-12
+
+        theme_a:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.theme_a
+            type: dropdown
+            default: 0
+            span: storm
+            cssClass: col-lg-6
+
+        theme_b:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.theme_b
+            type: dropdown
+            default: 0
+            span: storm
+            cssClass: col-lg-6
+
+        code_label:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.code_label
+            type: section
+            span: storm
+            cssClass: col-xs-12
+
+        code_a:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.code_a
+            span: storm
+            cssClass: col-lg-6
+
+        code_b:
+            tab: indikator.popup::lang.form.abtest
+            label: indikator.popup::lang.form.code_b
+            span: storm
+            cssClass: col-lg-6
+
+secondaryTabs:
+
+    fields:
+
+        status:
+            label: indikator.popup::lang.form.status
+            required: true
+            type: radio
+            options:
+                1: indikator.popup::lang.form.status_active
+                2: indikator.popup::lang.form.status_inactive
+            default: 1
+            span: storm
+            cssClass: col-xs-12

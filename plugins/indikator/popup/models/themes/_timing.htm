@@ -1,0 +1,9 @@
+<?php
+
+if ($record->timing) {
+    echo round($record->open / 1000, 1).' '.Lang::get('indikator.popup::lang.form.sec');
+}
+
+else {
+    echo str_replace(['-', ' '], '', Lang::get('indikator.popup::lang.form.none'));
+}

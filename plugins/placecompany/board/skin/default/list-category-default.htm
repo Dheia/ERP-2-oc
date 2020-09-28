@@ -1,0 +1,66 @@
+<div class="board-category category-mobile">
+    <form id="board-category-form-{{ board.id }}" method="get" action="{{ url.toString() }}">
+        {{ url.set('pageid', '1').set('category1', '').set('category2', '').set('target', '').set('keyword', '').set('mod', 'list').toInput()|raw }}
+
+        {% if board.initCategory1() %}
+        <select name="category1" onchange="jQuery('#board-category-form-{{ board.id }}').submit();">
+            <option value="">{{ 'placecompany.board::lang.All'|trans }}</option>
+            {% set hasCategory = board.hasNextCategory() %}
+            {% for i in 1..1000 if hasCategory %}
+            <option value="{{ board.currentCategory() }}" {{ (category1 == board.currentCategory()) ? 'selected' : '' }}>{{ board.currentCategory() }}</option>
+            {% set hasCategory = board.hasNextCategory() %}
+            {% endfor %}
+        </select>
+        {% endif %}
+
+        {% if board.initCategory1() %}
+        <select name="category2" onchange="jQuery('#board-category-form-{{ board.id }}').submit();">
+            <option value="">{{ 'placecompany.board::lang.All'|trans }}</option>
+            {% set hasCategory = board.hasNextCategory() %}
+            {% for i in 1..1000 if hasCategory %}
+            <option value="{{ board.currentCategory() }}" {{ (category2 == board.currentCategory()) ? 'selected' : '' }}>{{ board.currentCategory() }}</option>
+            {% set hasCategory = board.hasNextCategory() %}
+            {% endfor %}
+        </select>
+        {% endif %}
+    </form>
+</div>
+
+<div class="board-category category-pc">
+    {% if board.initCategory1() %}
+    <ul class="board-category-list">
+        <li {{ not category1 ? 'class="board-category-selected"' : '' }}>
+            <a href="{{ url.set('category1', '').set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toString() }}">
+                {{ 'placecompany.board::lang.All'|trans }}</a>
+        </li>
+        {% set hasCategory = board.hasNextCategory() %}
+        {% for i in 1..1000 if hasCategory %}
+        <li {{ (category1 == board.currentCategory()) ? 'class="board-category-selected"' : '' }}>
+            <a href="{{ url.set('category1', board.currentCategory()).set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toString() }}">
+                {{ board.currentCategory() }}
+            </a>
+        </li>
+        {% set hasCategory = board.hasNextCategory() %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if board.initCategory2() %}
+    <ul class="board-category-list">
+        <li {{ not category2 ? 'class="board-category-selected"' : '' }}>
+        <a href="{{ url.set('category2', '').set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toString() }}">
+            {{ 'placecompany.board::lang.All'|trans }}</a>
+        </li>
+        {% set hasCategory = board.hasNextCategory() %}
+        {% for i in 1..1000 if hasCategory %}
+        <li {{ (category2 == board.currentCategory()) ? 'class="board-category-selected"' : '' }}>
+        <a href="{{ url.set('category1', board.currentCategory()).set('pageid', '1').set('target', '').set('keyword', '').set('mod', 'list').toString() }}">
+            {{ board.currentCategory() }}
+        </a>
+        </li>
+        {% set hasCategory = board.hasNextCategory() %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</div>

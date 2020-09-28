@@ -1,0 +1,58 @@
+.popup {
+    -webkit-animation: horizontal 0.4s;
+    animation: horizontal 0.4s;
+}
+
+@-webkit-keyframes horizontal {
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(-90px, 0);
+        -ms-transform: translate(-90px, 0);
+        transform: translate(-90px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0%, 0);
+        -ms-transform: translate(0%, 0);
+        transform: translate(0%, 0);
+    }
+
+}
+
+@-ms-keyframes horizontal {
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(-90px, 0);
+        -ms-transform: translate(-90px, 0);
+        transform: translate(-90px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0%, 0);
+        -ms-transform: translate(0%, 0);
+        transform: translate(0%, 0);
+    }
+
+}
+
+@keyframes horizontal {
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(-90px, 0);
+        -ms-transform: translate(-90px, 0);
+        transform: translate(-90px, 0);
+    }
+  
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0%, 0);
+        -ms-transform: translate(0%, 0);
+        transform: translate(0%, 0);
+    }
+
+}

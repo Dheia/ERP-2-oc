@@ -1,0 +1,36 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: id
+        invisible: true
+
+    board_name:
+        label: 게시판 이름
+        searchable: true
+
+    skin:
+        label: 스킨
+        searchable: true
+
+    permission_read:
+        label: 읽기권한
+        type: partial
+        path: ~/plugins/placecompany/board/models/boardsetting/_permission_read.htm
+
+    permission_write:
+        label: 쓰기권한
+        type: partial
+        path: ~/plugins/placecompany/board/models/boardsetting/_permission_write.htm
+
+    permission_comments_write:
+        label: 댓글쓰기권한
+        type: partial
+        path: ~/plugins/placecompany/board/models/boardsetting/_permission_comments_write.htm
+
+    created_at:
+        label: 생성일
+        type: datetime

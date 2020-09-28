@@ -1,0 +1,76 @@
+# ===================================
+#  Field Definitions
+# ===================================
+fields:
+    # 기본설정 탭
+    _board_id:
+        type: partial
+        path: $/placecompany/board/models/boardlatestview/_hidden_fields.htm
+        attributes:
+            hidden: true
+
+    name:
+        label: 최신글 모아보기 이름
+        required: true
+        attributes:
+            autofocus: ''
+        span: left
+
+    skin:
+        label: 최신글 스킨 선택
+        type: dropdown
+        default: 0
+        span: left
+        comment: 게시판 스킨에 따라 모양과 기능이 변합니다.
+
+    rpp:
+        label: 게시글 표시 수
+        type: dropdown
+        default: 10
+        options:
+            1: 1개
+            2: 2개
+            3: 3개
+            4: 4개
+            5: 5개
+            6: 6개
+            7: 7개
+            8: 8개
+            9: 9개
+            10: 10개
+            11: 11개
+            12: 12개
+            13: 13개
+            14: 14개
+            15: 15개
+            16: 16개
+            17: 17개
+            18: 18개
+            19: 19개
+            20: 20개
+            30: 30개
+            40: 40개
+            50: 50개
+            60: 60개
+            70: 70개
+            80: 80개
+            90: 90개
+            100: 100개
+        span: left
+        comment: 한 페이지에 보여지는 게시글 개수를 정합니다.
+
+    sort:
+        label: 정렬 순서
+        type: dropdown
+        options:
+            newest: 최신순
+            best: 추천순
+            viewed: 조회순
+            updated: 업데이트순
+        span: left
+
+    _link:
+        label: 모아볼 게시판
+        type: Placecompany\Board\FormWidgets\switchAreaBuilder
+        span: left
+        comment: 모아볼 게시판들을 선택합니다.

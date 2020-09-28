@@ -1,0 +1,17 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: indikator.popup::lang.title.campaigns
+form: ~/plugins/indikator/popup/models/campaigns/fields.yaml
+
+modelClass: Indikator\Popup\Models\Campaigns
+defaultRedirect: indikator/popup/campaigns
+
+create:
+    redirect: indikator/popup/campaigns/update/:id
+    redirectClose: indikator/popup/campaigns
+
+update:
+    redirect: indikator/popup/campaigns/update/:id
+    redirectClose: indikator/popup/campaigns

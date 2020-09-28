@@ -1,0 +1,71 @@
+description = "Default layout"
+[launchPopup]
+==
+<?
+function onStart()
+{
+    $this['config'] = [
+    'appName' => config('app.name'),
+    'locale' => $locale = app()->getLocale(),
+    'locales' => config('app.locales'),
+    'githubAuth' => config('services.github.client_id'),
+    ];
+
+    $this['polyfills'] = [
+    'Promise',
+    'Object.assign',
+    'Object.values',
+    'Array.prototype.find',
+    'Array.prototype.findIndex',
+    'Array.prototype.includes',
+    'String.prototype.includes',
+    'String.prototype.startsWith',
+    'String.prototype.endsWith',
+    ];
+
+    $this['locale'] = app()->getLocale();
+    $this['isLocal'] = app()->isLocal();
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ config.appName }} - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="{{ config.appName }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="{{ config.appName }}">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+        {% styles %}
+
+    </head>
+    <body>
+    <?= Form::token() ?>
+
+    <!-- Content -->
+    <section id="layout-content">
+        {% page %}
+    </section>
+
+    <!-- Global configuration object -->
+    <script>
+        window.config = {{ config|json_encode|raw }};
+    </script>
+    <!-- Scripts -->
+    <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
+
+    <!-- Polyfill JS features via polyfill.io -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features={{ polyfills|join(',') }}"></script>
+
+    <!-- Load the application scripts -->
+
+    {% framework extras %}
+    {% scripts %}
+
+    {% component 'launchPopup' %}
+    </body>
+</html>

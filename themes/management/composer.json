@@ -1,0 +1,24 @@
+{
+    "name": "october/management-theme",
+    "type": "october-theme",
+    "description": "플레이스컴퍼니 업체관리 테마",
+    "keywords": ["october", "cms", "demo", "theme"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "플레이스컴퍼니",
+            "email": "support@placecompany.kr",
+            "role": "Co-founder"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "algolia/algoliasearch-client-php": "^2.7"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

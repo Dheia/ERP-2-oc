@@ -1,0 +1,21 @@
+title = "Demonstration"
+url = "/"
+layout = "default"
+
+[Board]
+==
+<!--<div class="container">
+    {!--% component 'Board' id='1' %--}
+</div>-->
+
+
+<div id="app"></div>
+
+{% put styles %}
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="{{ 'assets/css/app.css'|theme }}" rel="stylesheet">
+{% endput %}
+
+{% put scripts %}
+<script type="text/javascript" src="{{ ['assets/javascript/app.js']|theme }}"></script>
+{% endput %}
