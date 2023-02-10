@@ -1,8 +1,0 @@
-1.0.1:
-    First version of board-comments
-1.0.2:
-    - 'Created table placecompany_board_comment'
-    - create_board_comment_table.php
-1.0.3:
-    - 'Created table placecompany_board_comment_option'
-    - create_board_comment_option_table.php

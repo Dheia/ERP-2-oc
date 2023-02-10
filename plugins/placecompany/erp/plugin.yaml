@@ -1,6 +1,0 @@
-plugin:
-    name: 'placecompany.erp::lang.plugin.name'
-    description: 'placecompany.erp::lang.plugin.description'
-    author: placecompany
-    icon: oc-icon-folder
-    homepage: ''
